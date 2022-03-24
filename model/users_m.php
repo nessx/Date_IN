@@ -9,7 +9,7 @@
         }
 
         public function getUser(){
-            $consulta = "SELECT * FROM users LEFT JOIN acciones ON users.ID = acciones.actor WHERE acciones.accion = null";
+            $consulta = "SELECT * FROM Users";
             $result = $this->db->query($consulta);
             while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
                 $this->users[]=$fila;
@@ -18,7 +18,7 @@
         }
 
         public function getUser_by_Id($id){
-            $consulta = "SELECT * FROM users WHERE id=$id";
+            $consulta = "SELECT * FROM Users";
             $result = $this->db->query($consulta);
             while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
                 $this->users[]=$fila;
