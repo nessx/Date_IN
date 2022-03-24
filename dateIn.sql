@@ -14,8 +14,8 @@
 
 
 -- Volcando estructura de base de datos para Date_IN
-CREATE DATABASE IF NOT EXISTS `Date_IN` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `Date_IN`;
+CREATE DATABASE IF NOT EXISTS `DateIn` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `DateIn`;
 
 -- Volcando estructura para tabla Date_IN.Actions
 CREATE TABLE IF NOT EXISTS `Actions` (
