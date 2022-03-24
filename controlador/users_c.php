@@ -4,6 +4,8 @@
 
     class Users {
 
+        $user_recived;
+
         public function __construct($params, $body){
         
             $method = array_shift($params);
@@ -24,18 +26,13 @@
         private function getUsuario($params){
             $model = new Users_model();
             if (count($params) == 0){
-                $user = $model->getUser();
+                $user_recived = $model->getUser();
+                print($user_recived);
             } else {
-                switch (strtolower($params[0])){
-                    case "id":
-                        $user = $model->getUser_by_Id($params[1]);
-                        break;
-                    default:
-                        echo "bad request";
-                }
+                
             }
 
-        
+            require_once("./vista/users_v.php");
         }
     }
 
