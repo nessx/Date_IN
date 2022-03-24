@@ -13,24 +13,24 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Volcando estructura de base de datos para DateIn
-CREATE DATABASE IF NOT EXISTS `DateIn` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `DateIn`;
+-- Volcando estructura de base de datos para Date_IN
+CREATE DATABASE IF NOT EXISTS `Date_IN` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `Date_IN`;
 
--- Volcando estructura para tabla DateIn.Actions
+-- Volcando estructura para tabla Date_IN.Actions
 CREATE TABLE IF NOT EXISTS `Actions` (
-  `id_user` int(11) NOT NULL,
-  `id_affected_user` int(11) NOT NULL,
-  `action` int(11) NOT NULL,
-  PRIMARY KEY (`id_user`,`id_affected_user`)
+  `id_user` int(255) NOT NULL,
+  `id_affected_user` int(255) NOT NULL,
+  `action` int(255) NOT NULL,
+  PRIMARY KEY (`id_user`,`id_affected_user`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla DateIn.Api-key
+-- Volcando estructura para tabla Date_IN.Api-key
 CREATE TABLE IF NOT EXISTS `Api-key` (
-  `id` varchar(255) NOT NULL DEFAULT '',
-  `user_id` varchar(255) NOT NULL DEFAULT '',
+  `id` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_Api-key_Users` (`user_id`),
   CONSTRAINT `FK_Api-key_Users` FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -38,13 +38,13 @@ CREATE TABLE IF NOT EXISTS `Api-key` (
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla DateIn.Users
+-- Volcando estructura para tabla Date_IN.Users
 CREATE TABLE IF NOT EXISTS `Users` (
-  `id` varchar(50) NOT NULL DEFAULT 'AUTO_INCREMENT',
-  `name` varchar(255) NOT NULL DEFAULT '0',
-  `last_name` varchar(255) NOT NULL DEFAULT '0',
-  `email` varchar(255) NOT NULL DEFAULT '0',
-  `password` varchar(255) NOT NULL DEFAULT '0',
+  `id` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
