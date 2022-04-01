@@ -13,11 +13,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Volcando estructura de base de datos para Date_IN
+-- Volcando estructura de base de datos para DateIn
+DROP DATABASE IF EXISTS `DateIn`;
 CREATE DATABASE IF NOT EXISTS `DateIn` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `DateIn`;
 
--- Volcando estructura para tabla Date_IN.Actions
+-- Volcando estructura para tabla DateIn.Actions
+DROP TABLE IF EXISTS `Actions`;
 CREATE TABLE IF NOT EXISTS `Actions` (
   `id_user` int(255) NOT NULL,
   `id_affected_user` int(255) NOT NULL,
@@ -27,20 +29,22 @@ CREATE TABLE IF NOT EXISTS `Actions` (
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla Date_IN.Api-key
+-- Volcando estructura para tabla DateIn.Api-key
+DROP TABLE IF EXISTS `Api-key`;
 CREATE TABLE IF NOT EXISTS `Api-key` (
-  `id` varchar(255) NOT NULL,
   `user_id` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
+  `api_key` varchar(255) NOT NULL,
   KEY `FK_Api-key_Users` (`user_id`),
   CONSTRAINT `FK_Api-key_Users` FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla Date_IN.Users
+-- Volcando estructura para tabla DateIn.Users
+DROP TABLE IF EXISTS `Users`;
 CREATE TABLE IF NOT EXISTS `Users` (
   `id` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,

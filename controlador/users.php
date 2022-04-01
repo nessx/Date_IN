@@ -8,7 +8,7 @@
                     $this->getUsers($params);
                     break;
                 case "POST":
-                    //$this->postPelicula($params, $body);
+                    $this->postUser($params, $body);
                     break;
                 default:
                     $this->notImplementedMethodUser($params, $body, $method);
@@ -18,10 +18,11 @@
 
         private function getUsers($params){
             $model = new users_model();
+            
             if (count($params) == 0){
                 $user = $model->getUsers();
             }else{
-                switch (strtolower($params[0])){
+                switch (strtolower($params[1])){
                     case "id":
                         $user = $model->getusersById($params[1]);
                         break;
@@ -32,13 +33,13 @@
             require_once("./vista/user_v.php");
         }
 
-        /*private function postPelicula($params, $body){
-            $model = new user_model();
-            $newId = $model->appendPelicula($body);
-            $user = $model->getPeliById($newId);
+        private function postUser($params, $body){
+            $model = new users_model();
+            $newId = $model->appendUser($body);
+            $user = $model->getusersById($newId);
             http_response_code(201);
-            require_once("./vista/user.php");
-        }*/
+            require_once("./vista/user_v.php");
+        }
 
         private function notImplementedMethodUser($params, $method){
             header('Content-Type: application/json');
