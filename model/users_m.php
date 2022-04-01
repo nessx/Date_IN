@@ -40,7 +40,7 @@
             if ($users){
                 $consulta = "SELECT id FROM Users ORDER BY id DESC LIMIT 1;";
                 $result = $this->db->query($consulta);
-                $last_id = $result->fetch(PDO::FETCH_ASSOC)["ID"];
+                $last_id = $result->fetch(PDO::FETCH_ASSOC)["id"];
                 $new_id = $last_id + 1;
                 $consulta = "INSERT INTO Users (`id`, `username`, `name`, `last_name`, `email`, `password`, `description`) VALUES (:id, :username, :name, :last_name, :email, :password, :description);";
                 $dades = [
