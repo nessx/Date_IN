@@ -48,6 +48,7 @@
                     'username'=>$users->username,
                     'name'=>$users->name,
                     'last_name'=>$users->last_name,
+                    'email'=>$users->email,
                     'password'=>password_hash($users->password, PASSWORD_DEFAULT),
                     'description'=>$users->description
                 ];

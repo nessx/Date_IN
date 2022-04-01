@@ -38,7 +38,7 @@
             $newId = $model->appendUser($body);
             $user = $model->getusersById($newId);
             http_response_code(201);
-            require_once("./vista/user_v.php");
+            require_once("./vista/register_v.php");
         }
 
         private function notImplementedMethodUser($params, $method){

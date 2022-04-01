@@ -68,6 +68,6 @@
         <ul>
             <li><a href="http://orangeyoutube.local/frmk/main/" >Inici</a></li>
             <li><a href="http://orangeyoutube.local/frmk/peliculas/" >Llistat</a></li>
-            <li><a href="http://orangeyoutube.local/frmk/login/" >Login</a></li>
+            <li><a href="http://orangeyoutube.local/frmk/users/" >GET All Users</a></li>
         </ul>
     </nav>
