@@ -1,6 +1,6 @@
 <?php
     require_once("./model/users_m.php");
-    class user{    
+    class users{    
         public function __construct($params, $body){
             $method = array_shift($params);
             switch ($method){
@@ -27,6 +27,7 @@
                         echo "bad request";
                 }
             }
+            http_response_code(201);
             require_once("./vista/user_v.php");
         }
 

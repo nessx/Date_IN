@@ -3,71 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        ul li {
-            float: left;
-        }
+    <meta name="description" content="">
+    <meta name="author" content="ticlekiwi">
 
-        ul li a{
-            display: block;
-            padding: 2px 6px;
-            margin: 0px;
-            background-color: #555555;
-            text-decoration: none;
-            text-align: center;
-            border-radius: 3px;
-            font-weight: bold;
-            color: white;
-        }
-        
-        ul li a:hover {
-            background-color: #222222;
-        }
-        table{
-            width: 100%;
-        }
-        th {
-            padding: 0px 6px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            border-radius: 6px;
-        }
-        td {
-            text-align: center;
-            border-radius: 6px;
-        }
-        .cell_titol{
-            text-align: left;
-        }
-        .fila_parell td{
-            background-color: #f0eeee;
-        }
-        .fila_parell td:hover{
-            background-color: #f0e0e0;
-        }
-        .fila_senar td{
-            background-color: #d0cccc;
-        }
-        .fila_senar td:hover{
-            background-color: #d0c0c0;
-        }
-        h3 {
-            clear: both;
-        }
-    </style>
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El meu framework</title>
+
+    <link rel="stylesheet" href="css/hightlightjs-dark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300&family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="http://orangeyoutube.local/frmk/main/" >Inici</a></li>
-            <li><a href="http://orangeyoutube.local/frmk/peliculas/" >Llistat</a></li>
-            <li><a href="http://orangeyoutube.local/frmk/users/" >GET All Users</a></li>
-        </ul>
-    </nav>
+        
