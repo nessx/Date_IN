@@ -1,54 +1,47 @@
 <?php
-    require_once("./model/users_m.php");
-
-    Class Login{
-        private $user;
-        private $uuid;
-
+    require_once("./model/Usuari.php");
+    require_once("./model/login_m.php");
+    class Login{
         public function __construct($params, $body){
-            $bool = $this->validate_username($body);
-            $json = new stdClass();
+            $method = array_shift($params);
+            $api_key = array_shift($params);
+            switch ($method){
+                case "POST":
+                    $this->postLogin($params, $body);
+                    break;
+                case "OPTIONS":
+                    // Necessari per CORS preflight.
+                    break;
+                default:
+                    http_response_code(405); // Mètode no permès!
+            }
+        }
 
-            if($bool){
-                $this->uuid = $this->guidv4();
-                require("./model/apikey.php");
-                $apikey = new Apikey();
+        private function postLogin($params, $body){
+            $model = new Login_model();
+            $usuari = null;
 
-                $apikey->add($this->user["id"],$this->uuid);
+            $nick = strtolower($params[0]);
+            $password = $params[1]; 
 
-                $json->uuid = $this->uuid;
+            /*$nick = strtolower($body->nick);
+            $password = $body->password; */
+
+            // No calcular el hash perquè hem de cridar a password_verify()
+            // $password_hash = password_hash($password, PASSWORD_BCRYPT);
+            $candidate = new Usuari($nick, $password);
+            $stored_user = $model->comprovar_password($candidate);
+            $login_ok = ($stored_user != NULL);
+            if ($login_ok){
+                $api_key = App::guidv4();
+                $stored_user->append_x_api_key($api_key);
+                $stored_user->store_me();
+                http_response_code(201);
+                require_once("./vista/login_v.php");
             }else{
                 http_response_code(401);
-                $json->error = "Incorrect password";
             }
-
-            require_once("./vista/login_v.php");
-        }
-
-
-        function validate_username($user){
-            $model = new users_model();
-
-            $user_model = $model->getusersByUsername($user->username);
-
-            $result = password_verify($user->password, $user_model["password"]);
-
-            if($result){
-                $this->user = $user_model;
-            }
-
-            return $result;
-        }
-
-        function guidv4($data = null) {
-            $data = $data ?? random_bytes(16);
-            assert(strlen($data) == 16);
-        
-            $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
-
-            $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
-        
-            return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+            
         }
     }
 ?>

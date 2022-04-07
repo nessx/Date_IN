@@ -1,4 +1,4 @@
 <?php
     header("Content-Type: application/json; charset=utf-8");
-    echo json_encode($json).PHP_EOL;
+    header("x-api-key: ".$api_key);
 ?>

@@ -9,7 +9,7 @@
     <meta http-equiv="cleartype" content="on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El meu framework</title>
+    <title>DATE IN FRMK</title>
 
     <link rel="stylesheet" href="css/hightlightjs-dark.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
