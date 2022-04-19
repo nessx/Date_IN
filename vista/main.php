@@ -70,7 +70,8 @@
         {
             "id":"2",
             "username":"tite",
-            "name":"1234","last_name":"ff",
+            "name":"1234",
+            "last_name":"ff",
             "email":"ff@i.com",
             "password":"$2y$10$Lpwd38m13oqUcRh1oJwiGeD0UBsG.C4MY0aYM3qYojO6M77GjppJy",
             "description":"fsddfsff"

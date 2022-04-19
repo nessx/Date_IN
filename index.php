@@ -8,6 +8,7 @@
     $x_api_key = "";
     if ($_SERVER['HTTP_X_API_KEY']){
         $x_api_key = $_SERVER['HTTP_X_API_KEY'];
+        var_dump($x_api_key);
     } 
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: *");
