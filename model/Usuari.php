@@ -6,9 +6,13 @@ require_once 'Usuari_persistencia.php';
         private $hash_password = null;
         private $x_api_keys = null;
         private $persistencia = null;
-        public function __construct($nick, $hash_password, $x_api_keys = null){
+        private $descripcion = null;
+
+        public function __construct($nick, $hash_password, $descripcion){
+            $x_api_keys = null;
             $this->nick = strtolower($nick);
             $this->hash_password = $hash_password;
+            $this->descripcion = $descripcion;
             $this->x_api_keys = $x_api_keys;
             $this->persistencia = new Usuari_persistencia();
         }
@@ -23,6 +27,10 @@ require_once 'Usuari_persistencia.php';
 
         public function get_nick(){
             return $this->nick;
+        }
+
+        public function get_descripcion(){
+            return $this->descripcion;
         }
 
         public function get_x_api_keys(){

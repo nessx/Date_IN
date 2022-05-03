@@ -14,8 +14,10 @@
             $usuari = null;
             $nick = $body->nick;
             $password = $body->password;
+            $descripcion = $body->descripcion;
+
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
-            $usuari = new Usuari($nick, $password_hash);
+            $usuari = new Usuari($nick, $password_hash, $descripcion);
             $usuari->store_me();
             http_response_code(204);
         }

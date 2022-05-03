@@ -1,13 +1,13 @@
 <?php
     require_once("./model/Usuari.php");
     require_once("./model/login_m.php");
-    class Login{
+    class like{
         public function __construct($params, $body){
             $method = array_shift($params);
             $api_key = array_shift($params);
             switch ($method){
-                case "GET":
-                    $this->postLogin($params, $body);
+                case "POST":
+                    $this->postLike($params, $body);
                     break;
                 case "OPTIONS":
                     // Necessari per CORS preflight.
@@ -17,18 +17,13 @@
             }
         }
 
-        private function postLogin($params, $body){
-            $model = new Login_model();
+        private function postLike($params, $body){
+            $model = new Action_Model();
             $usuari = null;
 
-            $nick = strtolower($params[0]);
-            $password = $params[1]; 
+            $current = $params[0];
+            $destination = $params[1];
 
-            /*$nick = strtolower($body->nick);
-            $password = $body->password; */
-
-            // No calcular el hash perquè hem de cridar a password_verify()
-            // $password_hash = password_hash($password, PASSWORD_BCRYPT);
             $candidate = new Usuari($nick, $password,null);
             $stored_user = $model->comprovar_password($candidate);
             $login_ok = ($stored_user != NULL);

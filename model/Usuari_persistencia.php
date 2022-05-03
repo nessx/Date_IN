@@ -51,11 +51,13 @@
 
         private function store_new_usuari($usuari){
             $api_keys = $usuari->get_x_api_keys();
-            $sentencia = $this->db->prepare("INSERT INTO usuaris (nick, hash_password) VALUES (:nick, :hash_password);");
+            $sentencia = $this->db->prepare("INSERT INTO usuaris (nick, hash_password, descripcion) VALUES (:nick, :hash_password, :descripcion);");
             $nick = $usuari->get_nick();
             $hash_password = $usuari->get_hash_password();
+            $descripcion = $usuari->get_descripcion();
             $sentencia->bindParam(':nick', $nick);
             $sentencia->bindParam(':hash_password', $hash_password);
+            $sentencia->bindParam(':descripcion', $descripcion);
             $sentencia->execute();
             $usuari_desat = $this->get_usuari($nick);
             $user_id = $usuari_desat->get_id();
