@@ -3,7 +3,7 @@
         public function __construct(){
             require_once("./model/connexio.php");
             $this->db=Connexio::connectar();
-        }
+        }   
 
         public function get_usuari($nick){
             $nick = strtolower($nick);
@@ -27,6 +27,15 @@
             return null;
         }
 
+        public function get_usuaris($id){
+            $consulta = "SELECT id,nick,descripcion FROM usuaris WHERE id != '$id'";
+            $result = $this->db->query($consulta);
+            while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
+                $this->users[]=$fila;
+            }
+            return $this->users;
+        }
+
         public function get_usuari_by_UUID($uuid){
             $usuari = null;
             $nick = null;
@@ -47,6 +56,17 @@
                 return $this->store_new_usuari($usuari);
             }
             return $this->update_usuari($usuari_desat->get_id(), $usuari);
+        }
+
+        public function store_action($usuari){
+            $sentencia = $this->db->prepare("INSERT INTO Actions (id_user, id_affected_user, action) VALUES (:id_user, :id_affected_user, :action);");
+            $current_user = $usuari->get_current_user();
+            $destination_user = $usuari->get_destination_user();
+            $action = $usuari->get_action();
+            $sentencia->bindParam(':id_user', $current_user);
+            $sentencia->bindParam(':id_affected_user', $destination_user);
+            $sentencia->bindParam(':action', $action);
+            $sentencia->execute();
         }
 
         private function store_new_usuari($usuari){

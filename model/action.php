@@ -37,7 +37,7 @@ require_once 'Usuari_persistencia.php';
         }
         
         public function store_me(){
-            $this->id = $this->persistencia->store_usuari($this);
+            $this->id = $this->persistencia->store_action($this);
         }
         
     }

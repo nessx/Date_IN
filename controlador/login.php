@@ -24,9 +24,6 @@
             $nick = strtolower($params[0]);
             $password = $params[1]; 
 
-            /*$nick = strtolower($body->nick);
-            $password = $body->password; */
-
             // No calcular el hash perquè hem de cridar a password_verify()
             // $password_hash = password_hash($password, PASSWORD_BCRYPT);
             $candidate = new Usuari($nick, $password,null);
